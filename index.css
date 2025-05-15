@@ -82,3 +82,26 @@ nav a:hover {
         color: rgb(118, 183, 118);
 
 }
+.gallery {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-container img:hover {
+    transform: scale(1.1);
+}
