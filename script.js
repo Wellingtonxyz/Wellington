@@ -47,3 +47,39 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+/* Melhorias para reorganização em aparelhos Android */
+
+// Detecta se está em um dispositivo Android
+function isAndroid() {
+    return /Android/i.test(navigator.userAgent);
+}
+
+if (isAndroid()) {
+    // Ajusta o zoom inicial para melhor visualização
+    let viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+        viewport = document.createElement('meta');
+        viewport.name = "viewport";
+        document.head.appendChild(viewport);
+    }
+    viewport.content = "width=device-width, initial-scale=1, maximum-scale=1";
+
+    // Garante que imagens e vídeos não ultrapassem a largura da tela
+    const responsiveElements = document.querySelectorAll("img, video");
+    responsiveElements.forEach(el => {
+        el.style.maxWidth = "100%";
+        el.style.height = "auto";
+        el.style.boxSizing = "border-box";
+    });
+
+    // Ajusta fontes para melhor leitura em telas pequenas
+    const allText = document.querySelectorAll("body, p, h1, h2, h3, h4, h5, h6, li, a");
+    allText.forEach(el => {
+        el.style.wordBreak = "break-word";
+        el.style.fontSize = "1.05em";
+    });
+
+    // Adiciona um pequeno padding nas laterais para evitar cortes
+    document.body.style.paddingLeft = "8px";
+    document.body.style.paddingRight = "8px";
+}
