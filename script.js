@@ -83,3 +83,94 @@ if (isAndroid()) {
     document.body.style.paddingLeft = "8px";
     document.body.style.paddingRight = "8px";
 }
+/* Chat widget no lado direito do rodapé */
+document.addEventListener("DOMContentLoaded", function() {
+    // Cria o container do chat
+    const chatContainer = document.createElement("div");
+    chatContainer.id = "chat-widget";
+    chatContainer.style.position = "fixed";
+    chatContainer.style.right = "24px";
+    chatContainer.style.bottom = "0";
+    chatContainer.style.width = "320px";
+    chatContainer.style.maxWidth = "90vw";
+    chatContainer.style.background = "#fff";
+    chatContainer.style.border = "1px solid #ccc";
+    chatContainer.style.borderRadius = "12px 12px 0 0";
+    chatContainer.style.boxShadow = "0 0 12px rgba(0,0,0,0.15)";
+    chatContainer.style.zIndex = "9999";
+    chatContainer.style.display = "flex";
+    chatContainer.style.flexDirection = "column";
+    chatContainer.style.fontFamily = "Arial, sans-serif";
+
+    // Cabeçalho do chat
+    const chatHeader = document.createElement("div");
+    chatHeader.textContent = "Chat";
+    chatHeader.style.background = "#1976d2";
+    chatHeader.style.color = "#fff";
+    chatHeader.style.padding = "12px";
+    chatHeader.style.fontWeight = "bold";
+    chatHeader.style.borderRadius = "12px 12px 0 0";
+    chatHeader.style.textAlign = "center";
+    chatContainer.appendChild(chatHeader);
+
+    // Área de mensagens
+    const chatMessages = document.createElement("div");
+    chatMessages.id = "chat-messages";
+    chatMessages.style.flex = "1";
+    chatMessages.style.padding = "12px";
+    chatMessages.style.overflowY = "auto";
+    chatMessages.style.height = "180px";
+    chatContainer.appendChild(chatMessages);
+
+    // Área de input
+    const chatForm = document.createElement("form");
+    chatForm.style.display = "flex";
+    chatForm.style.borderTop = "1px solid #eee";
+    chatForm.style.padding = "8px";
+
+    const chatInput = document.createElement("input");
+    chatInput.type = "text";
+    chatInput.placeholder = "Digite sua mensagem...";
+    chatInput.required = true;
+    chatInput.style.flex = "1";
+    chatInput.style.padding = "8px";
+    chatInput.style.border = "1px solid #ccc";
+    chatInput.style.borderRadius = "4px";
+    chatInput.style.marginRight = "8px";
+
+    const chatButton = document.createElement("button");
+    chatButton.type = "submit";
+    chatButton.textContent = "Enviar";
+    chatButton.style.background = "#1976d2";
+    chatButton.style.color = "#fff";
+    chatButton.style.border = "none";
+    chatButton.style.borderRadius = "4px";
+    chatButton.style.padding = "8px 16px";
+    chatButton.style.cursor = "pointer";
+
+    chatForm.appendChild(chatInput);
+    chatForm.appendChild(chatButton);
+    chatContainer.appendChild(chatForm);
+
+    document.body.appendChild(chatContainer);
+
+    // Lógica de envio de mensagens
+    chatForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if (msg) {
+            const msgDiv = document.createElement("div");
+            msgDiv.textContent = msg;
+            msgDiv.style.background = "#e3f2fd";
+            msgDiv.style.margin = "4px 0";
+            msgDiv.style.padding = "6px 10px";
+            msgDiv.style.borderRadius = "8px";
+            msgDiv.style.alignSelf = "flex-end";
+            msgDiv.style.maxWidth = "80%";
+            msgDiv.style.wordBreak = "break-word";
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            chatInput.value = "";
+        }
+    });
+});
