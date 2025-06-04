@@ -1,4 +1,4 @@
-# Meu Site Corrigido
+# Meu Site
 
 Este projeto é um site simples que demonstra o uso de HTML, CSS e JavaScript para criar uma interface de usuário atraente e funcional.
 
