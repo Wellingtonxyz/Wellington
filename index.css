@@ -105,3 +105,39 @@ nav a:hover {
 .gallery-container img:hover {
     transform: scale(1.1);
 }
+/* Responsividade para dispositivos móveis */
+@media (max-width: 900px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contener, .container {
+        padding: 0 10px;
+    }
+    ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 8px;
+    }
+    footer a {
+        margin: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+    header img, footer img {
+        width: 100px;
+        height: 100px;
+    }
+    h1, h2, h3 {
+        font-size: 1.2em;
+    }
+    .contener, .container {
+        padding: 0 4px;
+    }
+    body {
+        font-size: 1em;
+    }
+}
