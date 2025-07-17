@@ -105,128 +105,36 @@
 
     </div>  
         <!-- Chat Widget -->
-        <style>
-        #chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 320px;
-            max-width: 90vw;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 12px 12px 0 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-            font-family: Arial, sans-serif;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        #chat-header {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            font-weight: bold;
-            text-align: left;
-            cursor: pointer;
-        }
-        #chat-messages {
-            flex: 1;
-            padding: 10px;
-            height: 180px;
-            overflow-y: auto;
-            font-size: 14px;
-            background: #fafafa;
-        }
-        #chat-input-area {
-            display: flex;
-            border-top: 1px solid #eee;
-            background: #f5f5f5;
-        }
-        #chat-input {
-            flex: 1;
-            border: none;
-            padding: 8px;
-            font-size: 14px;
-            background: transparent;
-            outline: none;
-        }
-        #chat-send {
-            background: #222;
-            color: #fff;
-            border: none;
-            padding: 0 16px;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 0 0 0 0;
-            transition: background 0.2s;
-        }
-        #chat-send:hover {
-            background: #444;
-        }
-        #chat-widget.collapsed {
-            height: 40px;
-            width: 180px;
-            min-width: 120px;
-        }
-        #chat-widget.collapsed #chat-messages,
-        #chat-widget.collapsed #chat-input-area {
-            display: none;
-        }
-        </style>
-        <div id="chat-widget" class="collapsed">
-            <div id="chat-header">💬 Fale conosco</div>
-            <div id="chat-messages"></div>
-            <div id="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off" />
-                <button id="chat-send">Enviar</button>
-            </div>
-        </div>
-        <script>
-        const chatWidget = document.getElementById('chat-widget');
-        const chatHeader = document.getElementById('chat-header');
-        const chatMessages = document.getElementById('chat-messages');
-        const chatInput = document.getElementById('chat-input');
-        const chatSend = document.getElementById('chat-send');
-
-        chatHeader.onclick = () => {
-            chatWidget.classList.toggle('collapsed');
-            if (!chatWidget.classList.contains('collapsed')) {
-                chatInput.focus();
-            }
-        };
-
-        function appendMessage(text, sender = 'user') {
-            const msg = document.createElement('div');
-            msg.style.margin = '6px 0';
-            msg.style.textAlign = sender === 'user' ? 'right' : 'left';
-            msg.innerHTML = `<span style="background:${sender==='user'?'#d1e7dd':'#e2e3e5'};padding:6px 12px;border-radius:12px;display:inline-block;max-width:80%">${text}</span>`;
-            chatMessages.appendChild(msg);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function botReply(userMsg) {
-            let reply = "Obrigado pela mensagem! Em breve retornaremos.";
-            if (userMsg.toLowerCase().includes('oi') || userMsg.toLowerCase().includes('olá')) {
-                reply = "Olá! Como posso ajudar?";
-            }
-            setTimeout(() => appendMessage(reply, 'bot'), 600);
-        }
-
-        function sendMessage() {
-            const text = chatInput.value.trim();
-            if (!text) return;
-            appendMessage(text, 'user');
-            chatInput.value = '';
-            botReply(text);
-        }
-
-        chatSend.onclick = sendMessage;
-        chatInput.addEventListener('keydown', e => {
-            if (e.key === 'Enter') sendMessage();
-        });
-        </script>
-   
-</audio>
+     <style>
+    #whatsapp-chat {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        background: #25d366;
+        color: #fff;
+        border-radius: 50px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        padding: 10px 18px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        transition: background 0.2s;
+        text-decoration: none;
+    }
+    #whatsapp-chat:hover {
+        background: #128c7e;
+    }
+    #whatsapp-chat img {
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+    }
+    </style>
+    <a id="whatsapp-chat" href="https://wa.me/5514981951220" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        Converse pelo WhatsApp
+    </a>
 </body>
 </html>
